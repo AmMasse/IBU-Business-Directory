@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IBU Business Directory - Register Your Business</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     * {
       margin: 0;
@@ -323,89 +322,6 @@
       background: #28a745;
     }
 
-    /* Auth Modal Styles */
-    #auth-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .auth-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .auth-container h2 {
-      margin-bottom: 1rem;
-      color: #4facfe;
-    }
-
-    .auth-input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #e9ecef;
-      border-radius: 10px;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .auth-button {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    #auth-error {
-      color: #f5576c;
-      margin-top: 1rem;
-      display: none;
-    }
-
-    /* User Info Styles */
-    #user-info {
-      display: none;
-      padding: 15px;
-      background: #f0f8ff;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    #user-info p {
-      margin: 0;
-      font-weight: 600;
-    }
-
-    #user-info span {
-      color: #4facfe;
-    }
-
-    #sign-out-button {
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
     @media (max-width: 768px) {
       .container {
         margin: 10px;
@@ -431,46 +347,10 @@
       .button-group {
         flex-direction: column;
       }
-
-      .auth-container {
-        padding: 1.5rem;
-        margin: 0 20px;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Auth Modal -->
-  <div id="auth-modal">
-    <div class="auth-container">
-      <h2>Sign In / Register</h2>
-      
-      <div id="auth-email">
-        <div class="form-group">
-          <label for="auth-email-input">Email Address</label>
-          <input type="email" id="auth-email-input" class="auth-input" placeholder="your@email.com">
-        </div>
-        <button id="auth-email-button" class="auth-button">
-          Continue with Email
-        </button>
-      </div>
-      
-      <div id="auth-otp" style="display: none;">
-        <p style="margin-bottom: 1rem;">We've sent a magic link to your email. Please check your inbox.</p>
-        <p style="margin-bottom: 1rem;">Alternatively, enter the OTP here:</p>
-        <div class="form-group">
-          <label for="auth-otp-input">OTP Code</label>
-          <input type="text" id="auth-otp-input" class="auth-input" placeholder="6-digit code">
-        </div>
-        <button id="auth-verify-button" class="auth-button">
-          Verify OTP
-        </button>
-      </div>
-      
-      <div id="auth-error"></div>
-    </div>
-  </div>
-
   <div class="container">
     <div class="header">
       <h1>Mr. IBU Business Directory</h1>
@@ -478,12 +358,6 @@
     </div>
 
     <div class="content">
-      <!-- User Info (shown after auth) -->
-      <div id="user-info">
-        <p>Logged in as: <span id="user-email"></span></p>
-        <button id="sign-out-button">Sign Out</button>
-      </div>
-
       <!-- Welcome Page -->
       <div class="welcome-page active" id="welcome">
         <div class="welcome-content">
@@ -729,147 +603,24 @@
   </div>
 
   <script>
-    // Initialize Supabase client
-    const supabaseUrl = 'https://qbcrtnbxrdpkxmlbdlkn.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-    // Auth state management
-    let authUser = null;
-
-    // DOM elements
-    const authModal = document.getElementById('auth-modal');
-    const authEmailSection = document.getElementById('auth-email');
-    const authOtpSection = document.getElementById('auth-otp');
-    const authError = document.getElementById('auth-error');
-    const userInfo = document.getElementById('user-info');
-    const userEmail = document.getElementById('user-email');
-    const signOutButton = document.getElementById('sign-out-button');
-    const welcomePage = document.getElementById('welcome');
-    const startButton = document.getElementById('start-registration');
-    const consentCheckbox = document.getElementById('consent');
-
-    // Form steps management
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const stepDots = document.querySelectorAll(".step-dot");
     const progressFill = document.getElementById("progress-fill");
     const progressContainer = document.getElementById("progress-container");
     const stepIndicators = document.getElementById("step-indicators");
+    const welcomePage = document.getElementById("welcome");
 
-    // Check auth state on page load
-    document.addEventListener('DOMContentLoaded', checkAuth);
+    // Handle consent checkbox
+    const consentCheckbox = document.getElementById("consent");
+    const startButton = document.getElementById("start-registration");
 
-    // Auth functions
-    async function checkAuth() {
-      const { data, error } = await supabase.auth.getSession();
-      
-      if (data.session) {
-        authUser = data.session.user;
-        showUserInfo();
-        // Enable the registration form if user is authenticated
-        startButton.disabled = !consentCheckbox.checked;
-      } else {
-        showAuthModal();
-      }
-    }
-
-    function showUserInfo() {
-      userEmail.textContent = authUser.email;
-      userInfo.style.display = 'flex';
-    }
-
-    function showAuthModal() {
-      authModal.style.display = 'flex';
-      startButton.disabled = true;
-    }
-
-    function hideAuthModal() {
-      authModal.style.display = 'none';
-    }
-
-    function showError(message) {
-      authError.textContent = message;
-      authError.style.display = 'block';
-      setTimeout(() => {
-        authError.style.display = 'none';
-      }, 5000);
-    }
-
-    // Email auth handler
-    document.getElementById('auth-email-button').addEventListener('click', async () => {
-      const email = document.getElementById('auth-email-input').value.trim();
-      
-      if (!email) {
-        showError('Please enter your email');
-        return;
-      }
-      
-      const { data, error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: window.location.href
-        }
-      });
-      
-      if (error) {
-        showError(error.message);
-      } else {
-        authEmailSection.style.display = 'none';
-        authOtpSection.style.display = 'block';
-        document.getElementById('auth-otp-input').focus();
-      }
+    consentCheckbox.addEventListener("change", function() {
+      startButton.disabled = !this.checked;
     });
 
-    // OTP verification handler
-    document.getElementById('auth-verify-button').addEventListener('click', async () => {
-      const token = document.getElementById('auth-otp-input').value.trim();
-      const email = document.getElementById('auth-email-input').value.trim();
-      
-      if (!token) {
-        showError('Please enter the OTP code');
-        return;
-      }
-      
-      const { data, error } = await supabase.auth.verifyOtp({
-        email,
-        token,
-        type: 'email'
-      });
-      
-      if (error) {
-        showError(error.message);
-      } else {
-        authUser = data.user;
-        hideAuthModal();
-        showUserInfo();
-        // Enable the registration form
-        startButton.disabled = !consentCheckbox.checked;
-      }
-    });
-
-    // Sign out handler
-    signOutButton.addEventListener('click', async () => {
-      const { error } = await supabase.auth.signOut();
-      if (!error) {
-        authUser = null;
-        userInfo.style.display = 'none';
-        showAuthModal();
-        // Reset the form
-        startButton.disabled = true;
-      }
-    });
-
-    // Consent checkbox handler
-    consentCheckbox.addEventListener('change', function() {
-      if (authUser) {
-        startButton.disabled = !this.checked;
-      }
-    });
-
-    // Start registration button handler
-    startButton.addEventListener('click', function() {
-      if (consentCheckbox.checked && authUser) {
+    startButton.addEventListener("click", function() {
+      if (consentCheckbox.checked) {
         welcomePage.classList.remove("active");
         progressContainer.style.display = "block";
         stepIndicators.style.display = "flex";
@@ -877,7 +628,6 @@
       }
     });
 
-    // Form step functions
     function showStep(step) {
       steps.forEach((el, idx) => el.classList.toggle("active", idx === step));
       
@@ -894,29 +644,21 @@
     }
 
     function nextStep() {
-      // Validate current step before proceeding
-      if (currentStep === 0) {
-        const businessName = document.getElementById("business_name");
-        const category = document.getElementById("category");
-        
-        if (!businessName.value) {
-          businessName.focus();
-          showError('Please enter your business name');
-          return;
-        }
-        
-        if (!category.value) {
-          category.focus();
-          showError('Please select a business category');
-          return;
-        }
-      }
-      
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
-      }
+  // Validate current step before proceeding
+  if (currentStep === 0) {
+    const category = document.getElementById("category");
+    if (!category.value) {
+      category.focus();
+      alert("Please select a business category");
+      return;
     }
+  }
+  
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
 
     function prevStep() {
       if (currentStep > 0) {
@@ -925,16 +667,8 @@
       }
     }
 
-    // Form submission
     document.getElementById("business-form").addEventListener("submit", async function(e) {
       e.preventDefault();
-      
-      // Check if user is authenticated
-      if (!authUser) {
-        showError('Please sign in to submit your business');
-        showAuthModal();
-        return;
-      }
       
       // Show loading state
       const submitBtn = e.target.querySelector('button[type="submit"]');
@@ -946,12 +680,8 @@
         const formData = new FormData(this);
         const data = Object.fromEntries(formData.entries());
 
-        // Add user info to the business data
-        data.user_id = authUser.id;
-        data.user_email = authUser.email;
-
         // Collect all working days checked
-        data.working_days = Array.from(formData.getAll("working_days")).join(',');
+        data.working_days = formData.getAll("working_days").join(',');
 
         // Convert list fields to arrays
         if (data.services) data.services = data.services.split(',').map(s => s.trim()).filter(s => s);
@@ -959,14 +689,17 @@
         if (data.payment_methods) data.payment_methods = data.payment_methods.split(',').map(p => p.trim()).filter(p => p);
         if (data.languages) data.languages = data.languages.split(',').map(l => l.trim()).filter(l => l);
 
+        // Add timestamp
+        //data.created_at = new Date().toISOString();
+
         console.log("Submitting data:", data);
 
         const response = await fetch("https://qbcrtnbxrdpkxmlbdlkn.supabase.co/rest/v1/businesses", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "apikey": supabaseKey,
-            "Authorization": `Bearer ${supabaseKey}`,
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
             "Prefer": "return=representation"
           },
           body: JSON.stringify(data)
@@ -994,7 +727,7 @@
         }
       } catch (error) {
         console.error("Submission error:", error);
-        showError('Submission failed. Please check your internet connection and try again.');
+        alert("❌ Submission failed. Please check your internet connection and try again.\n\nError details: " + error.message);
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         submitBtn.style.background = "";
