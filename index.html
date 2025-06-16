@@ -644,11 +644,21 @@
     }
 
     function nextStep() {
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
-      }
+  // Validate current step before proceeding
+  if (currentStep === 0) {
+    const category = document.getElementById("category");
+    if (!category.value) {
+      category.focus();
+      alert("Please select a business category");
+      return;
     }
+  }
+  
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
 
     function prevStep() {
       if (currentStep > 0) {
