@@ -698,7 +698,7 @@
           headers: {
             "Content-Type": "application/json",
             "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9zZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
             "Prefer": "return=representation"
           },
           body: JSON.stringify(data)
@@ -726,7 +726,7 @@
         }
       } catch (error) {
         console.error("Submission error:", error);
-        alert("❌ Submission failed. Please check your internet connection and try again.\n\nError details: " + error.message);
+        alert("❌ Submission failed. Please try again later.\n\nError details: " + error.message);
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         submitBtn.style.background = "";
