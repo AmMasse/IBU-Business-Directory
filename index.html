@@ -670,14 +670,15 @@
         const formData = new FormData(this);
         const data = Object.fromEntries(formData.entries());
 
-        // Collect all working days checked
-        data.working_days = formData.getAll("working_days").join(',');
+        // Collect all working days checked as an array
+        data.working_days = formData.getAll("working_days");
 
-        // Convert list fields to arrays
-        if (data.services) data.services = data.services.split(',').map(s => s.trim()).filter(s => s);
-        if (data.tags) data.tags = data.tags.split(',').map(t => t.trim()).filter(t => t);
-        if (data.payment_methods) data.payment_methods = data.payment_methods.split(',').map(p => p.trim()).filter(p => p);
-        if (data.languages) data.languages = data.languages.split(',').map(l => l.trim()).filter(l => l);
+        // Convert list fields to arrays, or set to [] if empty
+        data.services = data.services ? data.services.split(',').map(s => s.trim()).filter(s => s) : [];
+        data.tags = data.tags ? data.tags.split(',').map(t => t.trim()).filter(t => t) : [];
+        data.payment_methods = data.payment_methods ? data.payment_methods.split(',').map(p => p.trim()).filter(p => p) : [];
+        data.languages = data.languages ? data.languages.split(',').map(l => l.trim()).filter(l => l) : [];
+        if (!data.working_days || data.working_days.length === 0) data.working_days = [];
 
         // Add timestamp
         //data.created_at = new Date().toISOString();
@@ -689,7 +690,7 @@
           headers: {
             "Content-Type": "application/json",
             "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9zZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg",
             "Prefer": "return=representation"
           },
           body: JSON.stringify(data)
