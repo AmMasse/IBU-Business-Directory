@@ -622,103 +622,106 @@
   <script>
     // --- Supabase Auth Setup ---
     const supabaseUrl = 'https://qbcrtnbxrdpkxmlbdlkn.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFiY3J0bmJ4cmRwa3htbGJkbGtuIiwicm9zZSI6ImFub24iLCJpYXQiOjE3NTAwNjA4NjUsImV4cCI6MjA2NTYzNjg2NX0.KbInVmeJ1AZzLXdKe4pGxKMsMX_54KgXcz5HiZOEtxg';
     const supabase = supabase.createClient(supabaseUrl, supabaseKey);
     let supabaseUser = null;
 
-    const authModal = document.getElementById('auth-modal');
-    const authEmailInput = document.getElementById('auth-email-input');
-    const authEmailButton = document.getElementById('auth-email-button');
-    const authInfo = document.getElementById('auth-info');
-    const authError = document.getElementById('auth-error');
-    const userInfo = document.getElementById('user-info');
-    const userEmail = document.getElementById('user-email');
-    const signOutButton = document.getElementById('sign-out-button');
+    window.addEventListener('DOMContentLoaded', async () => {
+      // DOM elements
+      const authModal = document.getElementById('auth-modal');
+      const authEmailInput = document.getElementById('auth-email-input');
+      const authEmailButton = document.getElementById('auth-email-button');
+      const authInfo = document.getElementById('auth-info');
+      const authError = document.getElementById('auth-error');
+      const userInfo = document.getElementById('user-info');
+      const userEmail = document.getElementById('user-email');
+      const signOutButton = document.getElementById('sign-out-button');
+      const consentCheckbox = document.getElementById("consent");
+      const startButton = document.getElementById("start-registration");
 
-    // Show/hide auth modal
-    function showAuthModal() {
-      authModal.style.display = 'flex';
-    }
-    function hideAuthModal() {
-      authModal.style.display = 'none';
-    }
-
-    // Show/hide user info
-    function showUserInfo(email) {
-      userEmail.textContent = email;
-      userInfo.style.display = 'flex';
-    }
-    function hideUserInfo() {
-      userInfo.style.display = 'none';
-    }
-
-    // Handle sign-in
-    authEmailButton.addEventListener('click', async () => {
-      const email = authEmailInput.value.trim();
-      if (!email) {
-        authError.textContent = 'Please enter your email.';
-        authError.style.display = 'block';
-        return;
+      // Show/hide auth modal
+      function showAuthModal() {
+        authModal.style.display = 'flex';
       }
-      authError.style.display = 'none';
-      authInfo.style.display = 'block';
-      authInfo.textContent = 'Sending magic link...';
-      const { error } = await supabase.auth.signInWithOtp({ email });
-      if (error) {
-        authInfo.style.display = 'none';
-        authError.textContent = error.message;
-        authError.style.display = 'block';
-      } else {
-        authInfo.textContent = 'Check your email for a sign-in link.';
+      function hideAuthModal() {
+        authModal.style.display = 'none';
       }
-    });
 
-    // Handle sign-out
-    signOutButton.addEventListener('click', async () => {
-      await supabase.auth.signOut();
-      supabaseUser = null;
-      hideUserInfo();
-      showAuthModal();
-      checkEmailVerification();
-    });
+      // Show/hide user info
+      function showUserInfo(email) {
+        userEmail.textContent = email;
+        userInfo.style.display = 'flex';
+      }
+      function hideUserInfo() {
+        userInfo.style.display = 'none';
+      }
 
-    // Listen for auth state changes
-    supabase.auth.onAuthStateChange(async (event, session) => {
-      if (session && session.user) {
-        supabaseUser = session.user;
-        hideAuthModal();
-        showUserInfo(supabaseUser.email);
-        checkEmailVerification();
-      } else {
+      // Handle sign-in
+      authEmailButton.addEventListener('click', async () => {
+        const email = authEmailInput.value.trim();
+        if (!email) {
+          authError.textContent = 'Please enter your email.';
+          authError.style.display = 'block';
+          return;
+        }
+        authError.style.display = 'none';
+        authInfo.style.display = 'block';
+        authInfo.textContent = 'Sending magic link...';
+        const { error } = await supabase.auth.signInWithOtp({ email });
+        if (error) {
+          authInfo.style.display = 'none';
+          authError.textContent = error.message;
+          authError.style.display = 'block';
+        } else {
+          authInfo.textContent = 'Check your email for a sign-in link.';
+        }
+      });
+
+      // Handle sign-out
+      signOutButton.addEventListener('click', async () => {
+        await supabase.auth.signOut();
         supabaseUser = null;
         hideUserInfo();
         showAuthModal();
         checkEmailVerification();
-      }
-    });
+      });
 
-    // Check email verification
-    async function checkEmailVerification() {
-      const { data: { user } } = await supabase.auth.getUser();
-      supabaseUser = user;
-      if (!user) {
-        document.getElementById('email-verify-warning').style.display = 'block';
-        startButton.disabled = true;
-        return false;
-      }
-      if (!user.email_confirmed_at) {
-        document.getElementById('email-verify-warning').style.display = 'block';
-        startButton.disabled = true;
-        return false;
-      } else {
-        document.getElementById('email-verify-warning').style.display = 'none';
-        startButton.disabled = !consentCheckbox.checked;
-        return true;
-      }
-    }
+      // Listen for auth state changes
+      supabase.auth.onAuthStateChange(async (event, session) => {
+        if (session && session.user) {
+          supabaseUser = session.user;
+          hideAuthModal();
+          showUserInfo(supabaseUser.email);
+          checkEmailVerification();
+        } else {
+          supabaseUser = null;
+          hideUserInfo();
+          showAuthModal();
+          checkEmailVerification();
+        }
+      });
 
-    // On page load, check auth and verification
-    window.addEventListener('DOMContentLoaded', async () => {
+      // Check email verification
+      async function checkEmailVerification() {
+        const { data: { user } } = await supabase.auth.getUser();
+        supabaseUser = user;
+        if (!user) {
+          document.getElementById('email-verify-warning').style.display = 'block';
+          startButton.disabled = true;
+          return false;
+        }
+        if (!user.email_confirmed_at) {
+          document.getElementById('email-verify-warning').style.display = 'block';
+          startButton.disabled = true;
+          return false;
+        } else {
+          document.getElementById('email-verify-warning').style.display = 'none';
+          startButton.disabled = !consentCheckbox.checked;
+          return true;
+        }
+      }
+
+      // On page load, check auth and verification
       const { data: { user } } = await supabase.auth.getUser();
       supabaseUser = user;
       if (!user) {
@@ -729,6 +732,22 @@
         showUserInfo(user.email);
       }
       checkEmailVerification();
+
+      // Consent checkbox logic
+      consentCheckbox.addEventListener("change", async function() {
+        await checkEmailVerification();
+      });
+
+      // Block form submission if not verified
+      const businessForm = document.getElementById("business-form");
+      businessForm.addEventListener("submit", async function(e) {
+        if (!await checkEmailVerification()) {
+          alert('You must verify your email before submitting your business.');
+          e.preventDefault();
+          return;
+        }
+        // ...existing code...
+      });
     });
 
     let currentStep = 0;
