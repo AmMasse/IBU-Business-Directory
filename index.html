@@ -679,6 +679,8 @@
         data.payment_methods = data.payment_methods ? data.payment_methods.split(',').map(p => p.trim()).filter(p => p) : [];
         data.languages = data.languages ? data.languages.split(',').map(l => l.trim()).filter(l => l) : [];
         if (!data.working_days || data.working_days.length === 0) data.working_days = [];
+        if (data.latitude === '') data.latitude = null;
+        if (data.longitude === '') data.longitude = null;        
 
         data.anon_id = localStorage.getItem("anon_id");
 
@@ -730,8 +732,7 @@
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         submitBtn.style.background = "";
-      }
-    });
+      }    });
 
     // Add some interactive elements
     document.addEventListener("DOMContentLoaded", function() {
