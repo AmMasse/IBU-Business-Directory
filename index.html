@@ -680,8 +680,16 @@
         data.languages = data.languages ? data.languages.split(',').map(l => l.trim()).filter(l => l) : [];
         if (!data.working_days || data.working_days.length === 0) data.working_days = [];
 
+        data.anon_id = localStorage.getItem("anon_id");
+
         // Add timestamp
         //data.created_at = new Date().toISOString();
+
+        // Generate anon_id once and store it in localStorage
+        if (!localStorage.getItem("anon_id")) {
+          const anonId = crypto.randomUUID();
+          localStorage.setItem("anon_id", anonId);
+        }
 
         console.log("Submitting data:", data);
 
