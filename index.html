@@ -214,15 +214,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 1.2rem;
+            overflow: hidden;
+            border: 3px solid var(--light-gray);
+            box-shadow: 0 4px 10px var(--shadow);
         }
         
-        .email-verified { background-color: #007bff; }
-        .phone-verified { background-color: #28a745; }
-        .location-verified { background-color: #343a40; }
-        .premium-verified { background: linear-gradient(135deg, var(--gold), #e6c200); color: var(--charcoal); }
+        .verification-card .badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         
         .verification-card h4 {
             font-size: 1.4rem;
@@ -497,7 +498,9 @@
                 
                 <div class="verification-grid">
                     <div class="verification-card">
-                        <div class="badge email-verified">📧</div>
+                        <div class="badge">
+                            <img src="blue.png" alt="Email Verified Badge">
+                        </div>
                         <h4>Email Verified</h4>
                         <p><strong>Automatic & Free</strong></p>
                         <p>Receive your blue verification badge instantly upon signing up and verifying your email address.</p>
@@ -509,7 +512,9 @@
                     </div>
                     
                     <div class="verification-card">
-                        <div class="badge phone-verified">📱</div>
+                        <div class="badge">
+                            <img src="green.png" alt="Phone Verified Badge">
+                        </div>
                         <h4>Phone Verified</h4>
                         <p><strong>Once-per-year paid verification</strong></p>
                         <p>Get your green verification badge by providing legal documentation via phone or email.</p>
@@ -522,7 +527,9 @@
                     </div>
                     
                     <div class="verification-card">
-                        <div class="badge location-verified">📍</div>
+                        <div class="badge">
+                            <img src="black.png" alt="Location Verified Badge">
+                        </div>
                         <h4>Location Verified</h4>
                         <p><strong>Yearly paid verification</strong></p>
                         <p>Receive your black verification badge through in-person verification of your business location and legal documents.</p>
@@ -535,7 +542,9 @@
                     </div>
                     
                     <div class="verification-card">
-                        <div class="badge premium-verified">👑</div>
+                        <div class="badge">
+                            <img src="gold.png" alt="Premium Verified Badge">
+                        </div>
                         <h4>Premium Verified</h4>
                         <p><strong>Subscription-based</strong></p>
                         <p>Get your gold verification badge with all benefits plus guaranteed promotion in searches and business activity confirmation.</p>
@@ -567,9 +576,9 @@
                         <li>Enable <strong>"Install from unknown sources"</strong></li>
                         <li>Open the downloaded APK file</li>
                         <li>Follow the installation prompts</li>
-                        <li>Accept the required permissions if asked</li>
+                        <li>Accept the required permissions</li>
                     </ol>
-                    <p style="margin-top: 20px; font-style: italic;">This app is free to download and use</p>
+                    <p style="margin-top: 20px; font-style: italic;">Note: The app requires certain permissions to function properly, including location access to show nearby businesses.</p>
                 </div>
             </div>
         </section>
@@ -582,7 +591,7 @@
                     <div class="usage-card">
                         <h4>👤 As a Guest User</h4>
                         <p>You can use Mr. IBU as a guest and simply ask our AI assistant what you're looking for. No registration required to search for businesses and professionals in your area.</p>
-                        <p><strong>Example:</strong> "I need a plumber in Kisenyi" or "Show me a pizza restaurant in Kasese "</p>
+                        <p><strong>Example:</strong> "I need a plumber near me" or "Show me the best restaurants in my area"</p>
                     </div>
                     
                     <div class="usage-card">
@@ -630,7 +639,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 IBU Business Directory. All rights reserved. | Connecting communities with local professionals.</p>
+            <p>&copy; 2024 IBU Business Directory. All rights reserved. | Connecting communities with local professionals.</p>
         </div>
     </footer>
 </body>
