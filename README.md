@@ -1,1 +1,1 @@
-IBU business-directory-registration-form
+IBU business-directory
