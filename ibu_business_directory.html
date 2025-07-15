@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBU Business Directory - AI-Powered Local Business Platform</title>
+    <meta name="description" content="IBU Business Directory - Connect with local professionals and businesses through our AI assistant Mr. IBU. Increase your business exposure today!">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/ibu-business-directory/">
+    <meta property="og:title" content="IBU Business Directory - AI-Powered Local Business Platform">
+    <meta property="og:description" content="Connect with local professionals and businesses through our AI assistant Mr. IBU">
+    <meta property="og:image" content="android-chrome-512x512.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourusername.github.io/ibu-business-directory/">
+    <meta property="twitter:title" content="IBU Business Directory - AI-Powered Local Business Platform">
+    <meta property="twitter:description" content="Connect with local professionals and businesses through our AI assistant Mr. IBU">
+    <meta property="twitter:image" content="android-chrome-512x512.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --charcoal: #36454F;
+            --gold: #FFD700;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --dark-gray: #495057;
+            --shadow: rgba(54, 69, 79, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--charcoal), #2c3e50);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--charcoal), #2c3e50);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero .highlight {
+            color: var(--gold);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--gold), #e6c200);
+            color: var(--charcoal);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--charcoal);
+        }
+        
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+        
+        /* Verification Tiers */
+        .verification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .verification-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .verification-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .verification-card .badge {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .email-verified { background-color: #007bff; }
+        .phone-verified { background-color: #28a745; }
+        .location-verified { background-color: #343a40; }
+        .premium-verified { background: linear-gradient(135deg, var(--gold), #e6c200); color: var(--charcoal); }
+        
+        .verification-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+        
+        .verification-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .verification-card li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .verification-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--charcoal), #2c3e50);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .download-section h2 {
+            color: var(--white);
+        }
+        
+        .download-button {
+            background: linear-gradient(135deg, var(--gold), #e6c200);
+            color: var(--charcoal);
+            padding: 20px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .installation-steps {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .installation-steps h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .installation-steps ol {
+            padding-left: 20px;
+        }
+        
+        .installation-steps li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* How to Use Section */
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .usage-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .usage-card h4 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--charcoal), #2c3e50);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: var(--white);
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .contact-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            padding: 20px 30px;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .contact-button:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--charcoal);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .verification-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="android-chrome-192x192.png" alt="IBU Business Directory Logo">
+                    <h1>IBU Business Directory</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#verification">Verification</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#how-to-use">How to Use</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Connect with Local <span class="highlight">Professionals</span> & <span class="highlight">Businesses</span></h2>
+                <p>IBU Business Directory is an AI-powered platform that increases exposure for small businesses, technicians, handyworkers, and local professionals. Meet Mr. IBU, your AI assistant who helps you find the right service or professional in your area.</p>
+                <a href="#download" class="cta-button">Download App</a>
+                <a href="#how-to-use" class="cta-button">Learn More</a>
+            </div>
+        </section>
+
+        <section id="verification" class="section">
+            <div class="container">
+                <h2>🌟 Verification Tiers</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px;">Build trust with your customers through our comprehensive verification system. Higher verification levels mean better visibility and increased customer confidence.</p>
+                
+                <div class="verification-grid">
+                    <div class="verification-card">
+                        <div class="badge email-verified">📧</div>
+                        <h4>Email Verified</h4>
+                        <p><strong>Automatic & Free</strong></p>
+                        <p>Receive your blue verification badge instantly upon signing up and verifying your email address.</p>
+                        <ul>
+                            <li>Basic profile visibility</li>
+                            <li>Email verification badge</li>
+                            <li>Access to basic features</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <div class="badge phone-verified">📱</div>
+                        <h4>Phone Verified</h4>
+                        <p><strong>Once-per-year paid verification</strong></p>
+                        <p>Get your green verification badge by providing legal documentation via phone or email.</p>
+                        <ul>
+                            <li>All email verified benefits</li>
+                            <li>Phone verification badge</li>
+                            <li>Higher search ranking</li>
+                            <li>Enhanced credibility</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <div class="badge location-verified">📍</div>
+                        <h4>Location Verified</h4>
+                        <p><strong>Yearly paid verification</strong></p>
+                        <p>Receive your black verification badge through in-person verification of your business location and legal documents.</p>
+                        <ul>
+                            <li>All previous benefits</li>
+                            <li>Location verification badge</li>
+                            <li>Premium search placement</li>
+                            <li>Maximum customer trust</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <div class="badge premium-verified">👑</div>
+                        <h4>Premium Verified</h4>
+                        <p><strong>Subscription-based</strong></p>
+                        <p>Get your gold verification badge with all benefits plus guaranteed promotion in searches and business activity confirmation.</p>
+                        <ul>
+                            <li>All verification benefits</li>
+                            <li>Premium gold badge</li>
+                            <li>Top search priority</li>
+                            <li>Active business confirmation</li>
+                            <li>Featured listings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="section download-section">
+            <div class="container">
+                <h2>📱 Download Mr. IBU App</h2>
+                <p>Get started today with our AI-powered business directory app. Available for Android devices.</p>
+                
+                <a href="Mr. IBU.apk" class="download-button" download>
+                    📱 Download APK
+                </a>
+                
+                <div class="installation-steps">
+                    <h4>📋 Installation Instructions for Android:</h4>
+                    <ol>
+                        <li>Go to <strong>Settings → Security</strong></li>
+                        <li>Enable <strong>"Install from unknown sources"</strong></li>
+                        <li>Open the downloaded APK file</li>
+                        <li>Follow the installation prompts</li>
+                        <li>Accept the required permissions</li>
+                    </ol>
+                    <p style="margin-top: 20px; font-style: italic;">Note: The app requires certain permissions to function properly, including location access to show nearby businesses.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-use" class="section">
+            <div class="container">
+                <h2>🧠 How to Use the App</h2>
+                
+                <div class="usage-grid">
+                    <div class="usage-card">
+                        <h4>👤 As a Guest User</h4>
+                        <p>You can use Mr. IBU as a guest and simply ask our AI assistant what you're looking for. No registration required to search for businesses and professionals in your area.</p>
+                        <p><strong>Example:</strong> "I need a plumber near me" or "Show me the best restaurants in my area"</p>
+                    </div>
+                    
+                    <div class="usage-card">
+                        <h4>🏢 As a Business Owner</h4>
+                        <p>Sign up for a free account and add up to 3 businesses to the directory. Once signed in, go to "My Business Dashboard" to manage your listings.</p>
+                        <p><strong>Steps:</strong></p>
+                        <ol style="margin-top: 10px; padding-left: 20px;">
+                            <li>Create your account</li>
+                            <li>Access "My Business Dashboard"</li>
+                            <li>Fill in your business details</li>
+                            <li>Submit for verification</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="usage-card">
+                        <h4>✅ Verification Process</h4>
+                        <p>After submitting your business details, go to the "About Us" section in the app to communicate with our team. Every business has different verification standards based on the industry and services offered.</p>
+                        <p><strong>Note:</strong> Our team will guide you through the specific requirements for your business type.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2>📬 Contact & Support</h2>
+                <p>Have questions or need support? We're here to help! Reach out to us through any of the following channels:</p>
+                
+                <div class="contact-buttons">
+                    <a href="mailto:ibudirectory@gmail.com" class="contact-button">
+                        📧 Email Us
+                    </a>
+                    <a href="https://wa.me/256703619256" class="contact-button" target="_blank">
+                        📱 WhatsApp
+                    </a>
+                </div>
+                
+                <p style="margin-top: 30px; opacity: 0.8;">
+                    Email: ibudirectory@gmail.com<br>
+                    Phone/WhatsApp: +256703619256
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 IBU Business Directory. All rights reserved. | Connecting communities with local professionals.</p>
+        </div>
+    </footer>
+</body>
+</html>
