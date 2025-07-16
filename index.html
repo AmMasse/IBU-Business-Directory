@@ -103,17 +103,29 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            margin: 0;
+            padding: 0;
         }
         
         nav a {
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color 0.3s, background 0.3s, border 0.3s;
+            padding: 8px 18px;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            position: relative;
         }
         
         nav a:hover {
             color: var(--gold);
+            border-color: var(--gold);
+        nav a.active, nav a.selected {
+            background: var(--gold);
+            color: var(--charcoal) !important;
+            border-color: var(--gold);
+        }
         }
         
         /* Hero Section */
@@ -478,6 +490,38 @@
             animation: fadeInUp 0.8s ease-out;
         }
     </style>
+</style>
+<script>
+// Highlight nav link on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+  function onScroll() {
+    let scrollPos = window.scrollY || window.pageYOffset;
+    let offset = 120; // header height + margin
+    let found = false;
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = sections[i];
+      if (section && section.offsetTop - offset <= scrollPos) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        navLinks[i].classList.add('active');
+        found = true;
+        break;
+      }
+    }
+    if (!found) navLinks.forEach(link => link.classList.remove('active'));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Also highlight on click
+  navLinks.forEach((link, idx) => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+  onScroll();
+});
+</script>
 </head>
 <body>
     <header>
@@ -507,10 +551,8 @@
                 <p><strong>IBU Business Directory</strong> is an AI-powered platform that increases exposure for small businesses, technicians, handworkers, and local professionals. 
                     The platform is designed to connect people with trusted local services — where local talent meets local needs.
                     Whether you're looking for a service or offering one, <strong>Mr. IBU</strong>, your smart digital broker, makes it easy by:</p>
-                <ul>
-                    <li>📢 <strong>Promoting what you do</strong> – Businesses fill in their details and services, and promote exactly how they want to be seen.</li>
-                    <li>🔍 <strong>Finding what you need</strong> – Customers are provided with the most accurate and up-to-date information on their needs.</li>
-                </ul>
+                <p>📢 <strong>Promoting what you do</strong> – Businesses fill in their details and services, and promote exactly how they want to be seen.</p>
+                <p>🔍 <strong>Finding what you need</strong> – Customers are provided with the most accurate and up-to-date information on their needs.</p>
                 <p>With IBU, customers discover reliable services faster, and businesses gain the exposure they deserve.</p>
                 <a href="#download" class="cta-button">Download App</a>
                 <a href="#how-to-use" class="cta-button">Learn More</a>
