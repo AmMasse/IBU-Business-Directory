@@ -264,17 +264,17 @@
         
         /* Download Section */
         .download-section {
-            background: linear-gradient(135deg, var(--accent), var(--charcoal));
+            background: var(--charcoal);
             color: var(--white);
             text-align: center;
         }
         
         .download-section h2 {
-            color: var(--gold);
+            color: var(--white);
         }
         
         .download-button {
-            background: linear-gradient(135deg, var(--gold), var(--accent));
+            background: var(--gold);
             color: var(--charcoal);
             padding: 20px 40px;
             border: none;
@@ -286,16 +286,16 @@
             text-decoration: none;
             display: inline-block;
             margin: 20px 0;
-            box-shadow: 0 6px 20px rgba(0,191,174,0.18);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.18);
         }
         
         .download-button:hover {
             transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 12px 32px rgba(0,191,174,0.22);
+            box-shadow: 0 12px 32px rgba(255, 215, 0, 0.22);
         }
         
         .installation-steps {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.10);
             padding: 30px;
             border-radius: 15px;
             margin-top: 40px;
@@ -303,7 +303,8 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 2px 12px rgba(0,191,174,0.08);
+            box-shadow: 0 2px 12px rgba(255, 255, 255, 0.08);
+            color: #fff;
         }
         
         .installation-steps h4 {
@@ -319,6 +320,7 @@
         .installation-steps li {
             margin-bottom: 10px;
             font-size: 1.1rem;
+            color: #fff;
         }
         
         /* How to Use Section */
@@ -485,15 +487,6 @@
                     <img src="android-chrome-192x192.png" alt="IBU Business Directory Logo">
                     <h1>IBU Business Directory</h1>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#verification">Verification</a></li>
-                        <li><a href="#download">Download</a></li>
-                        <li><a href="#how-to-use">How to Use</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
@@ -502,7 +495,14 @@
         <section id="home" class="hero">
             <div class="container">
                 <h2>Connect with Local <span class="highlight">Professionals</span> & <span class="highlight">Businesses</span></h2>
-                <p>IBU Business Directory is an AI-powered platform that increases exposure for small businesses, technicians, handyworkers, and local professionals. Meet Mr. IBU, your AI assistant who helps you find the right service or professional in your area.</p>
+                <p><strong>IBU Business Directory</strong> is an AI-powered platform that increases exposure for small businesses, technicians, handworkers, and local professionals.</p>
+                <p>The platform is designed to connect people with trusted local services — where local talent meets local needs.</p>
+                <p>Whether you're looking for a service or offering one, <strong>Mr. IBU</strong>, your smart digital broker, makes it easy by:</p>
+                <ul>
+                    <li>📢 <strong>Promoting what you do</strong> – Businesses fill in their details and services, and promote exactly how they want to be seen.</li>
+                    <li>🔍 <strong>Finding what you need</strong> – Customers are provided with the most accurate and up-to-date information on their needs.</li>
+                </ul>
+                <p>With IBU, customers discover reliable services faster, and businesses gain the exposure they deserve.</p>
                 <a href="#download" class="cta-button">Download App</a>
                 <a href="#how-to-use" class="cta-button">Learn More</a>
             </div>
@@ -635,7 +635,7 @@
         <section id="contact" class="section contact-section">
             <div class="container">
                 <h2>📬 Contact & Support</h2>
-                <p>Have questions or need support? We're here to help! Reach out to us through any of the following channels:</p>
+                <p style="color: #fff;">Have questions or need support? We're here to help! Reach out to us through any of the following channels:</p>
                 <div class="contact-buttons">
                     <a href="mailto:ibudirectory@gmail.com" class="contact-button">
                         📧 Email Us
@@ -643,10 +643,6 @@
                     <a href="https://wa.me/256703619256" class="contact-button" target="_blank">
                         📱 WhatsApp
                     </a>
-                </div>
-                <div style="margin-top: 30px; opacity: 0.95; color: var(--gold); font-size: 1.1rem;">
-                    <span style="display: inline-block; margin-bottom: 5px;">Email: <a href="mailto:ibudirectory@gmail.com" style="color: var(--gold); text-decoration: underline;">ibudirectory@gmail.com</a></span><br>
-                    <span>Phone/WhatsApp: <a href="https://wa.me/256703619256" style="color: var(--gold); text-decoration: underline;">+256703619256</a></span>
                 </div>
             </div>
         </section>
