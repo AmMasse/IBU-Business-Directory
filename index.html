@@ -35,12 +35,19 @@
         }
         
         :root {
-            --charcoal: #36454F;
+            --charcoal: #23272b;
             --gold: #FFD700;
             --white: #FFFFFF;
             --light-gray: #F8F9FA;
-            --dark-gray: #495057;
+            --dark-gray: #222831;
             --shadow: rgba(54, 69, 79, 0.1);
+            --accent: #00bfae;
+            --section-bg: #f4f6fa;
+            --section-alt-bg: #e9ecef;
+            --contact-bg: #23272b;
+            --contact-text: #f8f9fa;
+            --footer-bg: #181a1b;
+            --footer-text: #e0e0e0;
         }
         
         body {
@@ -160,17 +167,19 @@
         /* Sections */
         .section {
             padding: 80px 0;
+            background: var(--section-bg);
         }
         
         .section:nth-child(even) {
-            background-color: var(--light-gray);
+            background-color: var(--section-alt-bg);
         }
         
         .section h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
-            color: var(--charcoal);
+            color: var(--accent);
+            letter-spacing: 1px;
         }
         
         .section h3 {
@@ -182,7 +191,7 @@
         .section p {
             font-size: 1.1rem;
             margin-bottom: 20px;
-            color: var(--dark-gray);
+            color: #333;
         }
         
         /* Verification Tiers */
@@ -194,16 +203,18 @@
         }
         
         .verification-card {
-            background: var(--white);
+            background: #fff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px var(--shadow);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            border: 1px solid #e0e0e0;
         }
         
         .verification-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 16px 40px rgba(0,191,174,0.12);
         }
         
         .verification-card .badge {
@@ -253,17 +264,17 @@
         
         /* Download Section */
         .download-section {
-            background: linear-gradient(135deg, var(--charcoal), #2c3e50);
+            background: linear-gradient(135deg, var(--accent), var(--charcoal));
             color: var(--white);
             text-align: center;
         }
         
         .download-section h2 {
-            color: var(--white);
+            color: var(--gold);
         }
         
         .download-button {
-            background: linear-gradient(135deg, var(--gold), #e6c200);
+            background: linear-gradient(135deg, var(--gold), var(--accent));
             color: var(--charcoal);
             padding: 20px 40px;
             border: none;
@@ -275,16 +286,16 @@
             text-decoration: none;
             display: inline-block;
             margin: 20px 0;
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0,191,174,0.18);
         }
         
         .download-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 12px 32px rgba(0,191,174,0.22);
         }
         
         .installation-steps {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.18);
             padding: 30px;
             border-radius: 15px;
             margin-top: 40px;
@@ -292,6 +303,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            box-shadow: 0 2px 12px rgba(0,191,174,0.08);
         }
         
         .installation-steps h4 {
@@ -318,27 +330,28 @@
         }
         
         .usage-card {
-            background: var(--white);
+            background: #fff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid #e0e0e0;
         }
         
         .usage-card h4 {
-            color: var(--gold);
+            color: var(--accent);
             font-size: 1.3rem;
             margin-bottom: 15px;
         }
         
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, var(--charcoal), #2c3e50);
-            color: var(--white);
+            background: var(--contact-bg);
+            color: var(--contact-text);
             text-align: center;
         }
         
         .contact-section h2 {
-            color: var(--white);
+            color: var(--gold);
         }
         
         .contact-buttons {
@@ -350,8 +363,8 @@
         }
         
         .contact-button {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
+            background: rgba(0,191,174,0.12);
+            color: var(--gold);
             padding: 20px 30px;
             border: 2px solid var(--gold);
             border-radius: 50px;
@@ -366,19 +379,22 @@
         .contact-button:hover {
             background: var(--gold);
             color: var(--charcoal);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.04);
         }
         
         /* Footer */
         footer {
-            background-color: var(--charcoal);
-            color: var(--white);
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
             text-align: center;
             padding: 40px 0;
+            border-top: 2px solid var(--accent);
         }
         
         footer p {
-            opacity: 0.8;
+            opacity: 0.9;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
         }
         
         /* Responsive Design */
@@ -405,36 +421,37 @@
             .section {
                 padding: 60px 0;
             }
-            
             .section h2 {
                 font-size: 2rem;
             }
-            
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+            .verification-card, .usage-card {
+                margin-bottom: 20px;
             }
         }
         
         @media (max-width: 480px) {
             .container {
-                padding: 0 15px;
+                padding: 0 10px;
             }
-            
             .hero {
-                padding: 60px 0;
+                padding: 50px 0;
             }
-            
             .hero h2 {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
-            
             .verification-grid {
                 grid-template-columns: 1fr;
             }
-            
             .usage-grid {
                 grid-template-columns: 1fr;
+            }
+            .download-button {
+                font-size: 1.05rem;
+                padding: 14px 18px;
             }
         }
         
@@ -566,7 +583,7 @@
                 <p>Get started today with our AI-powered business directory app. Available for Android devices.</p>
                 
                 <a href="Mr. IBU.apk" class="download-button" download>
-                    📱 Download APK
+                    📱 Download APP
                 </a>
                 
                 <div class="installation-steps">
@@ -619,7 +636,6 @@
             <div class="container">
                 <h2>📬 Contact & Support</h2>
                 <p>Have questions or need support? We're here to help! Reach out to us through any of the following channels:</p>
-                
                 <div class="contact-buttons">
                     <a href="mailto:ibudirectory@gmail.com" class="contact-button">
                         📧 Email Us
@@ -628,11 +644,10 @@
                         📱 WhatsApp
                     </a>
                 </div>
-                
-                <p style="margin-top: 30px; opacity: 0.8;">
-                    Email: ibudirectory@gmail.com<br>
-                    Phone/WhatsApp: +256703619256
-                </p>
+                <div style="margin-top: 30px; opacity: 0.95; color: var(--gold); font-size: 1.1rem;">
+                    <span style="display: inline-block; margin-bottom: 5px;">Email: <a href="mailto:ibudirectory@gmail.com" style="color: var(--gold); text-decoration: underline;">ibudirectory@gmail.com</a></span><br>
+                    <span>Phone/WhatsApp: <a href="https://wa.me/256703619256" style="color: var(--gold); text-decoration: underline;">+256703619256</a></span>
+                </div>
             </div>
         </section>
     </main>
