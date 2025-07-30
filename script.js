@@ -1,0 +1,214 @@
+// Main JavaScript functionality
+import { siteConfig } from './config.js';
+import { 
+  createHeader, 
+  createHeroSection, 
+  createYouTubeSection,
+  createVerificationSection, 
+  createDownloadSection, 
+  createUsageSection, 
+  createContactSection, 
+  createFooter 
+} from './components.js';
+
+class IBUWebsite {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.renderPage();
+    this.setupEventListeners();
+    this.setupScrollEffects();
+    this.setupMobileMenu();
+  }
+
+  renderPage() {
+    const app = document.getElementById('app');
+    if (!app) return;
+
+    app.innerHTML = `
+      ${createHeader(siteConfig)}
+      <main>
+        ${createHeroSection(siteConfig)}
+        ${createYouTubeSection(siteConfig)}
+        ${createVerificationSection(siteConfig)}
+        ${createDownloadSection(siteConfig)}
+        ${createUsageSection(siteConfig)}
+        ${createContactSection(siteConfig)}
+      </main>
+      ${createFooter()}
+    `;
+  }
+
+  setupEventListeners() {
+    // Smooth scrolling for navigation links
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('.header').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+
+    // Button hover effects
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.matches('.btn')) {
+        e.target.style.transform = 'translateY(-2px) scale(1.02)';
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.matches('.btn')) {
+        e.target.style.transform = '';
+      }
+    });
+  }
+
+  setupScrollEffects() {
+    // Active navigation highlighting
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = Array.from(navLinks).map(link => {
+      const href = link.getAttribute('href');
+      return document.querySelector(href);
+    }).filter(Boolean);
+
+    const updateActiveNav = () => {
+      const scrollPos = window.scrollY + 150;
+      
+      let activeSection = null;
+      sections.forEach(section => {
+        if (section.offsetTop <= scrollPos && 
+            section.offsetTop + section.offsetHeight > scrollPos) {
+          activeSection = section;
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (activeSection && link.getAttribute('href') === `#${activeSection.id}`) {
+          link.classList.add('active');
+        }
+      });
+    };
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections and cards
+    document.querySelectorAll('.section, .verification-card, .usage-card, .video-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Scroll event listeners
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveNav();
+          this.updateHeaderBackground();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateActiveNav(); // Initial call
+  }
+
+  updateHeaderBackground() {
+    const header = document.querySelector('.header');
+    const scrolled = window.scrollY > 50;
+    
+    if (scrolled) {
+      header.style.background = 'rgba(26, 54, 93, 0.95)';
+      header.style.backdropFilter = 'blur(20px)';
+    } else {
+      header.style.background = '';
+      header.style.backdropFilter = '';
+    }
+  }
+
+  setupMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('.nav');
+    
+    if (mobileMenuBtn && nav) {
+      mobileMenuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking on a link
+      nav.addEventListener('click', (e) => {
+        if (e.target.matches('.nav-link')) {
+          nav.classList.remove('active');
+          mobileMenuBtn.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  // Method to update configuration dynamically
+  updateConfig(newConfig) {
+    Object.assign(siteConfig, newConfig);
+    this.renderPage();
+    this.setupEventListeners();
+    this.setupScrollEffects();
+    this.setupMobileMenu();
+  }
+
+  // Method to add new YouTube video
+  addYouTubeVideo(video) {
+    siteConfig.youtube.videos.push(video);
+    this.renderPage();
+    this.setupEventListeners();
+    this.setupScrollEffects();
+    this.setupMobileMenu();
+  }
+
+  // Method to update YouTube video
+  updateYouTubeVideo(index, video) {
+    if (siteConfig.youtube.videos[index]) {
+      siteConfig.youtube.videos[index] = { ...siteConfig.youtube.videos[index], ...video };
+      this.renderPage();
+      this.setupEventListeners();
+      this.setupScrollEffects();
+      this.setupMobileMenu();
+    }
+  }
+}
+
+// Initialize the website when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  window.ibuWebsite = new IBUWebsite();
+});
+
+// Export for potential external use
+export default IBUWebsite;
