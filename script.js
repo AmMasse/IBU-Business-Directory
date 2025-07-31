@@ -8,7 +8,8 @@ import {
   createDownloadSection, 
   createUsageSection, 
   createContactSection, 
-  createFooter 
+  createFooter,
+  createLegalSection
 } from './components.js';
 
 class IBUWebsite {
@@ -36,6 +37,7 @@ class IBUWebsite {
         ${createDownloadSection(siteConfig)}
         ${createUsageSection(siteConfig)}
         ${createContactSection(siteConfig)}
+        ${createLegalSection(siteConfig)}
       </main>
       ${createFooter()}
     `;

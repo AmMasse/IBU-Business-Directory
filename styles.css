@@ -1,12 +1,12 @@
 /* Modern CSS Variables and Reset */
 :root {
   /* Color Palette */
-  --primary: #1a365d;
-  --primary-light: #2d5a87;
-  --primary-dark: #0f2a44;
-  --secondary: #00bfae;
-  --secondary-light: #1dd1c1;
-  --secondary-dark: #009688;
+  --primary: #2c2c2c;
+  --primary-light: #404040;
+  --primary-dark: #1a1a1a;
+  --secondary: #4a4a4a;
+  --secondary-light: #5e5e5e;
+  --secondary-dark: #363636;
   --accent: #FFD700;
   --accent-light: #fff3a0;
   --accent-dark: #e6c200;
@@ -25,10 +25,10 @@
   --gray-900: #0f172a;
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
   --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--secondary-light));
   --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--primary-dark) 100%);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -734,9 +734,106 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 4px solid var(--secondary);
 }
 
-.footer p {
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.footer-content p {
   font-size: 1.1rem;
   opacity: 0.9;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+}
+
+.footer-link:hover {
+  color: var(--white);
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Legal Section */
+.legal-section {
+  background: var(--white);
+}
+
+.legal-grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.legal-card {
+  background: var(--white);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+
+.legal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.legal-title {
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 3px solid var(--accent);
+}
+
+.legal-content {
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+.legal-content h4 {
+  color: var(--secondary);
+  font-size: 1.3rem;
+  margin: var(--space-6) 0 var(--space-4) 0;
+  font-weight: 600;
+}
+
+.legal-content p {
+  margin-bottom: var(--space-4);
+}
+
+.legal-content ul {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-6);
+}
+
+.legal-content li {
+  margin-bottom: var(--space-2);
+  color: var(--gray-600);
+}
+
+.legal-content a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.legal-content a:hover {
+  text-decoration: underline;
 }
 
 /* Animations */
@@ -852,6 +949,15 @@ h1, h2, h3, h4, h5, h6 {
   .hero-feature {
     flex-direction: column;
     text-align: center;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .legal-content h4 {
+    font-size: 1.2rem;
   }
 }
 
