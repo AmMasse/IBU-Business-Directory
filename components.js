@@ -13,8 +13,8 @@ export function createHeader(config) {
               <li><a href="#home" class="nav-link">Home</a></li>
               <li><a href="#videos" class="nav-link">Tutorials</a></li>
               <li><a href="#verification" class="nav-link">Verification</a></li>
-              <li><a href="#download" class="nav-link">Download</a></li>
-              <li><a href="#how-to-use" class="nav-link">How to Use</a></li>
+              <li><a href="#download" class="nav-link">App</a></li>
+              <li><a href="#how-to-use" class="nav-link">Usage</a></li>
               <li><a href="#contact" class="nav-link">Contact</a></li>
               <li><a href="#legal" class="nav-link">Legal</a></li>
             </ul>
