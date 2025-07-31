@@ -11,7 +11,7 @@ export function createHeader(config) {
           <nav class="nav">
             <ul class="nav-list">
               <li><a href="#home" class="nav-link">Home</a></li>
-              <li><a href="#videos" class="nav-link">Videos</a></li>
+              <li><a href="#videos" class="nav-link">Tutorials</a></li>
               <li><a href="#verification" class="nav-link">Verification</a></li>
               <li><a href="#download" class="nav-link">Download</a></li>
               <li><a href="#how-to-use" class="nav-link">How to Use</a></li>
@@ -249,12 +249,12 @@ export function createLegalSection(config) {
           <div class="legal-card" id="privacy">
             <h3 class="legal-title">🔒 Privacy Policy</h3>
             <div class="legal-content">
-              <p><strong>Last updated:</strong> January 2025</p>
+              <p><strong>Last updated:</strong> July 2025</p>
               
               <h4>Information We Collect</h4>
               <ul>
                 <li><strong>Business Information:</strong> Company name, contact details, services offered, and business descriptions</li>
-                <li><strong>User Data:</strong> Email addresses for verification, phone numbers for enhanced verification</li>
+                <li><strong>User Data:</strong> Email addresses, website, phone numbers and location for enhanced verification</li>
                 <li><strong>Usage Data:</strong> App usage patterns, search queries, and interaction data to improve our services</li>
               </ul>
               
@@ -277,10 +277,11 @@ export function createLegalSection(config) {
           <div class="legal-card" id="terms">
             <h3 class="legal-title">📋 Terms of Service</h3>
             <div class="legal-content">
-              <p><strong>Last updated:</strong> January 2025</p>
+              <p><strong>Last updated:</strong> July 2025</p>
               
               <h4>Acceptance of Terms</h4>
               <p>By using IBU Business Directory, you agree to these terms of service. If you disagree with any part of these terms, you may not use our service.</p>
+              <p>By submitting your business and personal information (such as business name and phone number), you agree that your data may be publicly displayed to anyone seeking your services.</p>
               
               <h4>Service Description</h4>
               <p>IBU Business Directory is an AI-powered platform that connects customers with local businesses and professionals. We provide a directory service with verification tiers to ensure quality and trustworthiness.</p>
@@ -312,21 +313,22 @@ export function createLegalSection(config) {
           <div class="legal-card" id="data">
             <h3 class="legal-title">🛡️ Data Handling Compliance</h3>
             <div class="legal-content">
-              <p><strong>Last updated:</strong> January 2025</p>
+              <p><strong>Last updated:</strong> July 2025</p>
               
               <h4>GDPR Compliance</h4>
-              <p>We are committed to protecting the privacy rights of EU residents under the General Data Protection Regulation (GDPR).</p>
+              <p>We are committed to protecting personal data in compliance with Uganda’s Data Protection and Privacy Act, 2019 and other applicable privacy laws.</p>
+
               <ul>
                 <li><strong>Lawful Basis:</strong> We process data based on legitimate interests and user consent</li>
                 <li><strong>Data Minimization:</strong> We only collect data necessary for our services</li>
-                <li><strong>Right to Erasure:</strong> Users can request deletion of their personal data</li>
-                <li><strong>Data Portability:</strong> Users can request their data in a portable format</li>
+                <li><strong>Right to Erasure:</strong> Users can delete their personal data</li>
+                
               </ul>
               
               <h4>Data Storage and Security</h4>
               <ul>
                 <li><strong>Encryption:</strong> All data is encrypted using industry-standard protocols</li>
-                <li><strong>Access Control:</strong> Strict access controls limit who can view personal data</li>
+                <li><strong>Access Control:</strong> Strict access controls limit who can edit personal data</li>
                 <li><strong>Regular Audits:</strong> We conduct regular security audits and assessments</li>
                 <li><strong>Data Retention:</strong> Personal data is retained only as long as necessary</li>
               </ul>
@@ -343,7 +345,7 @@ export function createLegalSection(config) {
               <h4>Data Breach Protocol</h4>
               <p>In the unlikely event of a data breach, we will:</p>
               <ul>
-                <li>Notify affected users within 72 hours</li>
+                <li>Notify affected users as soon as possible</li>
                 <li>Report to relevant authorities as required by law</li>
                 <li>Take immediate steps to secure the breach</li>
                 <li>Provide regular updates on remediation efforts</li>
