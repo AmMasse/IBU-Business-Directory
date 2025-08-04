@@ -48,8 +48,8 @@ export const siteConfig = {
         description: "How to list your business with Mr. IBU"
       },
       {
-        id: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
-        title: "Verification Process",
+        id: "P0tDkW36fOM", // Replace with actual YouTube video IDs
+        title: "Asking IBU and The Verification Process",
         description: "Understanding our verification tiers and how to get verified"
       }
     ]
