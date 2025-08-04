@@ -43,9 +43,9 @@ export const siteConfig = {
         description: "Learn how to set up your business profile and get verified"
       },
       {
-        id: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
+        id: "VNJRhj0H-kA", // Replace with actual YouTube video IDs
         title: "Customer Guide",
-        description: "How to find and connect with local businesses using Mr. IBU"
+        description: "How to list your business with Mr. IBU"
       },
       {
         id: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
