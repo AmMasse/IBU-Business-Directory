@@ -38,9 +38,14 @@ export const siteConfig = {
     subtitle: "Learn more about our platform through these helpful videos",
     videos: [
       {
+        id: "bSgszTxdNQ4", // Replace with actual YouTube video IDs
+        title: "IBU (Meet the developer)",
+        description: "The start of our journey in developing the Information Broker."
+      },
+      {
         id: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
         title: "Getting Started with IBU",
-        description: "Learn how to set up your business profile and get verified"
+        description: "Learn how to set up your business profile"
       },
       {
         id: "VNJRhj0H-kA", // Replace with actual YouTube video IDs
