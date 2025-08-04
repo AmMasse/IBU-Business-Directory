@@ -43,11 +43,6 @@ export const siteConfig = {
         description: "The start of our journey in developing the Information Broker."
       },
       {
-        id: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
-        title: "Getting Started with IBU",
-        description: "Learn how to set up your business profile"
-      },
-      {
         id: "VNJRhj0H-kA", // Replace with actual YouTube video IDs
         title: "Customer Guide",
         description: "How to list your business with Mr. IBU"
