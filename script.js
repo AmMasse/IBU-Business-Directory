@@ -37,7 +37,6 @@ class IBUWebsite {
         ${createDownloadSection(siteConfig)}
         ${createUsageSection(siteConfig)}
         ${createContactSection(siteConfig)}
-        ${createLegalSection(siteConfig)}
       </main>
       ${createFooter()}
     `;

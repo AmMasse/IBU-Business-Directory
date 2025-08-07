@@ -16,7 +16,8 @@ export function createHeader(config) {
               <li><a href="#download" class="nav-link">App</a></li>
               <li><a href="#how-to-use" class="nav-link">Guide</a></li>
               <li><a href="#contact" class="nav-link">Contact</a></li>
-              <li><a href="#legal" class="nav-link">Legal</a></li>
+              <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+              <li><a href="terms.html" class="nav-link">Terms</a></li>
             </ul>
           </nav>
           <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
@@ -230,9 +231,8 @@ export function createFooter() {
         <div class="footer-content">
           <p>&copy; 2025 IBU Business Directory. All rights reserved. | Domus Dei Tech.</p>
           <div class="footer-links">
-            <a href="#privacy" class="footer-link">Privacy Policy</a>
-            <a href="#terms" class="footer-link">Terms of Service</a>
-            <a href="#data" class="footer-link">Data Handling</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="terms.html" class="footer-link">Terms of Service</a>
           </div>
         </div>
       </div>
