@@ -49,7 +49,7 @@ export const siteConfig = {
       },
       {
         id: "P0tDkW36fOM", // Replace with actual YouTube video IDs
-        title: "Asking IBU and The Verification Process",
+        title: "Customer Guide",
         description: "Understanding our verification tiers and how to get verified"
       }
     ]
