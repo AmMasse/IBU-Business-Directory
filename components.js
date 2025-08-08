@@ -16,8 +16,6 @@ export function createHeader(config) {
               <li><a href="#download" class="nav-link">App</a></li>
               <li><a href="#how-to-use" class="nav-link">Guide</a></li>
               <li><a href="#contact" class="nav-link">Contact</a></li>
-              <li><a href="privacy.html" class="nav-link">Privacy</a></li>
-              <li><a href="terms.html" class="nav-link">Terms</a></li>
             </ul>
           </nav>
           <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
