@@ -137,8 +137,8 @@ export const siteConfig = {
     subtitle: "Get started today with our AI-powered business directory app. Available for Android devices.",
     apkFile: "Mr. IBU.apk",
     installationSteps: [
-      "For Android user, we recommend: 'Download App' which will connect you to the app in playstore.",
-      "For ios/iphone users, we recommend: 'Visit Website' which will connect you to the website version of the app. Which works the same."
+      "For Android user we recommend: Download App which will connect you to the app in playstore.",
+      "For ios/iphone users we recommend: Visit Website which will connect you to the website version of the app. Which works the same."
     ]
   }
 };
