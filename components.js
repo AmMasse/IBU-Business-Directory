@@ -149,7 +149,7 @@ export function createDownloadSection(config) {
         </div>
         
         <div class="installation-guide">
-          <h4>📋 Installation Instructions for Android:</h4>
+          <h4>📋 Installation Instructions:</h4>
           <ol class="installation-steps">
             ${stepsHTML}
           </ol>
