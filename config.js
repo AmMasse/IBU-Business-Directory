@@ -3,7 +3,7 @@ export const siteConfig = {
   // Basic Site Information
   title: "IBU Business Directory",
   tagline: "AI-Powered Local Business Platform",
-  description: "Connect with local professionals and businesses through our AI assistant Mr. IBU. Increase your business exposure today!",
+  description: "Connecting local professionals, businesses and customers; through our AI assistant Mr. IBU, we link you to your customers. Let us increase your business exposure today!",
   
   // Contact Information
   contact: {
