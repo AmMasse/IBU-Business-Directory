@@ -43,12 +43,17 @@ export const siteConfig = {
         description: "The start of our journey in developing the Information Broker."
       },
       {
-        id: "VNJRhj0H-kA", // Replace with actual YouTube video IDs
+        id: "hoe_KhxeeqM", // https://youtu.be/hoe_KhxeeqM
+        title: "Customer Guide",
+        description: "Introduction to the app - IBU"
+      },
+      {
+        id: "rEGBIxQ_Uuc", // https://youtu.be/rEGBIxQ_Uuc
         title: "Customer Guide",
         description: "How to list your business with Mr. IBU"
       },
       {
-        id: "P0tDkW36fOM", // Replace with actual YouTube video IDs
+        id: "9LlNOjwac6E", //  https://youtu.be/9LlNOjwac6E
         title: "Customer Guide",
         description: "Understanding our verification tiers and how to get verified"
       }
