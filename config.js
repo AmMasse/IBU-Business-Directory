@@ -44,17 +44,17 @@ export const siteConfig = {
       },
       {
         id: "hoe_KhxeeqM", // https://youtu.be/hoe_KhxeeqM
-        title: "Customer Guide",
+        title: "Customer Guide 1",
         description: "Introduction to the app - IBU"
       },
       {
         id: "rEGBIxQ_Uuc", // https://youtu.be/rEGBIxQ_Uuc
-        title: "Customer Guide",
+        title: "Customer Guide 2",
         description: "How to list your business with Mr. IBU"
       },
       {
         id: "9LlNOjwac6E", //  https://youtu.be/9LlNOjwac6E
-        title: "Customer Guide",
+        title: "Customer Guide 3",
         description: "Understanding our verification tiers and how to get verified"
       }
     ]
@@ -139,11 +139,11 @@ export const siteConfig = {
   // App Download
   download: {
     title: "Download Mr. IBU App",
-    subtitle: "Get started today with our AI-powered business directory app. Available for Android devices.",
+    subtitle: "Get started today with our AI-powered business directory. Available only for Android devices now.",
     apkFile: "Mr. IBU.apk",
     installationSteps: [
-      "For Android user we recommend: Download App which will connect you to the app in playstore.",
-      "For ios/iphone users we recommend: Visit Website which will connect you to the website version of the app. Which works the same."
+      "For Android user we recommend: Download App which will connect you to our server and you can download the app as an apk. Remember to allow installation from other places on your phone. That's the only way you can install an apk. You may be cautioned that the file maybe unsafe, this is normal since you are not donwloading from playstore. Please download, and if asked to scan, allow the scan. ",
+      "For ios/iphone users we recommend: Visit Website which will connect you to the website version of the app. Which works the same. With time we shall create an ios app also."
     ]
   }
 };
