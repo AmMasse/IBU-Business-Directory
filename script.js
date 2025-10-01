@@ -161,11 +161,11 @@ class IBUWebsite {
     const scrolled = window.scrollY > 50;
 
     if (scrolled) {
-      header.style.background = 'rgba(26, 26, 26, 0.9)';
-      header.style.backdropFilter = 'blur(25px) saturate(180%)';
+      header.style.background = 'rgba(255, 255, 255, 0.35)';
+      header.style.backdropFilter = 'blur(35px) saturate(180%)';
     } else {
-      header.style.background = 'rgba(26, 26, 26, 0.7)';
-      header.style.backdropFilter = 'blur(20px) saturate(180%)';
+      header.style.background = 'rgba(255, 255, 255, 0.25)';
+      header.style.backdropFilter = 'blur(30px) saturate(180%)';
     }
   }
 
