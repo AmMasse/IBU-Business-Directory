@@ -159,13 +159,13 @@ class IBUWebsite {
   updateHeaderBackground() {
     const header = document.querySelector('.header');
     const scrolled = window.scrollY > 50;
-    
+
     if (scrolled) {
-      header.style.background = 'rgba(26, 54, 93, 0.95)';
-      header.style.backdropFilter = 'blur(20px)';
+      header.style.background = 'rgba(26, 26, 26, 0.9)';
+      header.style.backdropFilter = 'blur(25px) saturate(180%)';
     } else {
-      header.style.background = '';
-      header.style.backdropFilter = '';
+      header.style.background = 'rgba(26, 26, 26, 0.7)';
+      header.style.backdropFilter = 'blur(20px) saturate(180%)';
     }
   }
 
