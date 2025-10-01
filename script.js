@@ -84,26 +84,35 @@ class IBUWebsite {
       return document.querySelector(href);
     }).filter(Boolean);
 
+    // Cache section positions to avoid recalculating on every scroll
+    let sectionPositions = [];
+    const cacheSectionPositions = () => {
+      sectionPositions = sections.map(section => ({
+        element: section,
+        top: section.offsetTop,
+        bottom: section.offsetTop + section.offsetHeight
+      }));
+    };
+    cacheSectionPositions();
+
     const updateActiveNav = () => {
       const scrollPos = window.scrollY + 150;
-      
+
       let activeSection = null;
-      sections.forEach(section => {
-        if (section.offsetTop <= scrollPos && 
-            section.offsetTop + section.offsetHeight > scrollPos) {
-          activeSection = section;
+      for (const section of sectionPositions) {
+        if (section.top <= scrollPos && section.bottom > scrollPos) {
+          activeSection = section.element;
+          break;
         }
-      });
+      }
 
       navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (activeSection && link.getAttribute('href') === `#${activeSection.id}`) {
-          link.classList.add('active');
-        }
+        const isActive = activeSection && link.getAttribute('href') === `#${activeSection.id}`;
+        link.classList.toggle('active', isActive);
       });
     };
 
-    // Intersection Observer for animations
+    // Intersection Observer for animations - only animate once
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -112,27 +121,30 @@ class IBUWebsite {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
     // Observe all sections and cards
     document.querySelectorAll('.section, .verification-card, .usage-card, .video-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      el.classList.add('fade-in');
       observer.observe(el);
     });
 
-    // Scroll event listeners
+    // Throttled scroll handler
     let ticking = false;
+    let lastScrollY = window.scrollY;
+
     const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
+
+      if (!ticking && Math.abs(currentScrollY - lastScrollY) > 5) {
+        window.requestAnimationFrame(() => {
           updateActiveNav();
           this.updateHeaderBackground();
+          lastScrollY = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -140,7 +152,8 @@ class IBUWebsite {
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    updateActiveNav(); // Initial call
+    window.addEventListener('resize', cacheSectionPositions, { passive: true });
+    updateActiveNav();
   }
 
   updateHeaderBackground() {

@@ -82,6 +82,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-y: scroll;
 }
 
 body {
@@ -91,6 +92,7 @@ body {
   background-color: var(--white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Container */
@@ -233,6 +235,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1000;
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-lg);
+  will-change: background, backdrop-filter;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .header-content {
@@ -889,8 +893,19 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .section {
-  animation: fadeInUp 0.8s ease-out;
+  will-change: opacity, transform;
 }
 
 /* Responsive Design */
