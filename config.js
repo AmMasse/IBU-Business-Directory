@@ -117,7 +117,7 @@ export const siteConfig = {
     {
       title: "👤 As a Guest User",
       description: "You can use Mr. IBU as a guest and simply ask our AI assistant what you're looking for. No registration required to search for businesses and professionals in your area.",
-      example: "\"I need a plumber in Kitooro\" or \"Show me pizza restaurants in Kasese.\""
+      example: "\"plumber in Kitooro\" or \"pizza restaurants in Kasese.\""
     },
     {
       title: "🏢 As a Business Owner", 
@@ -126,12 +126,12 @@ export const siteConfig = {
         "Create your account",
         "Access \"My Business Dashboard\"",
         "Fill in your business details", 
-        "Submit for verification"
+        "Submit and chill"
       ]
     },
     {
       title: "✅ Verification Process",
-      description: "After submitting your business details, go to the \"About Us\" section in the app to communicate with our team. Every business has different verification standards based on the industry and services offered.",
+      description: "After submitting your business details, and incase you decide you want to get verified, go to the \"About Us\" section in the app to communicate with our team. Every business has different verification standards based on the industry and services offered.",
       note: "Our team will guide you through the specific requirements for your business type."
     }
   ],
