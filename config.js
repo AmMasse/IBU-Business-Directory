@@ -142,8 +142,8 @@ export const siteConfig = {
     subtitle: "Get started today with our AI-powered business directory. Available only for Android devices now.",
     apkFile: "Mr. IBU.apk",
     installationSteps: [
-      "For Android user we recommend: Download App which will connect you to our server and you can download the app as an apk. Remember to allow installation from other places on your phone. That's the only way you can install an apk. You may be cautioned that the file maybe unsafe, this is normal since you are not donwloading from playstore. Please download, and if asked to scan, allow the scan. ",
-      "For ios/iphone users we recommend: Visit Website which will connect you to the website version of the app. Which works the same. With time we shall create an ios app also."
+      "For Android user we recommend: Visit web app or Download App. Download App will connect you to our server and you can download the app as an apk. Remember to allow installation from other places on your phone. That's the only way you can install an apk. You may be cautioned that the file maybe unsafe, this is normal since you are not donwloading from playstore. Please download, and if asked to scan, allow the scan. Visit web app connects you straight to the app.",
+      "For ios/iphone users we recommend: Visit Web app which will connect you to the web version of the app. Which works the same. With time we shall create an ios app also."
     ]
   }
 };
