@@ -139,7 +139,7 @@ export const siteConfig = {
   // App Download
   download: {
     title: "Download Mr. IBU App",
-    subtitle: "Get started today with our AI-powered business directory. Available only for Android devices now.",
+    subtitle: "Get started today with our AI-powered business directory. Read installation steps below.",
     apkFile: "Mr. IBU.apk",
     installationSteps: [
       "For Android user we recommend: Visit web app or Download App. Download App will connect you to our server and you can download the app as an apk. Remember to allow installation from other places on your phone. That's the only way you can install an apk. You may be cautioned that the file maybe unsafe, this is normal since you are not donwloading from playstore. Please download, and if asked to scan, allow the scan. Visit web app connects you straight to the app.",
