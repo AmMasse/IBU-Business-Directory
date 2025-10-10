@@ -144,7 +144,7 @@ export function createDownloadSection(config) {
             ⬇️ Download APP
           </a>
           <a href="${config.contact.website}" class="btn btn-website" target="_blank" rel="noopener noreferrer">
-            📱 Visit Website
+            📱 Visit Web App
           </a>
         </div>
         
